@@ -5,7 +5,7 @@ This files includes function and class definitions
 #include "edf.h"
 #include "rms.h"
 
-void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
+void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
   std::cout<<"starting edf \n";
   // we get a vector made up of only the periods
   // first make a vector with just the periods
@@ -20,12 +20,10 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
 
   std::cout<< lcm << " is the lcm \n";
 
-  // STEP2: find the priority
-  // the smaller the period the higher the priority 
-  // we can just sort the task vector by the period and the smaller the index the higher the priority
-  sort(tasks_vector.begin(), tasks_vector.end(),sortcol);
-  // print_2d_vector(tasks_vector,n,m);
-  // std::cout<<"\n";
+  // STEP2: the algoritms is baded on the easiest dealine 
+  // each task has a subscript which denotes the number of times it has completed
+  //  once a task completes we change its dealine and resort the so the task with the earlist deadline
+  //  is always the fist
 
   //  The actual algorithm 
   for(int i = 0; i<lcm;i++){
@@ -33,31 +31,37 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
 
     //set the deadline flags to be on if a task deadline is meant to be on this tick
     for(int k = 0; k<n;k++){
+      //check if it is the first cycle 
       if(i==0){
-        break;
-      }
-      // check if there is meant to be a dealine 
+        // set the dealines which in this case are the fist piriods
+        tasks_vector[k][4] = tasks_vector[k][4] + tasks_vector[k][2]; 
+      }else{
 
-      if(i%tasks_vector[k][2]){
+        // check if there is meant to be a dealine 
+
+        if(i%tasks_vector[k][2]){
         // we set the deadline variable to zero
-         tasks_vector[k][4] = 0; 
+        // tasks_vector[k][4] = 0; 
 
-      }
-      else{
-
-        if(tasks_vector[k][1] ==tasks_vector[k][3]){
-        // we want to reset the completed states
-         tasks_vector[k][3] = 0;
         }
-        else if(tasks_vector[k][1] !=tasks_vector[k][3]){
+        else{
+
+          if(tasks_vector[k][1] ==tasks_vector[k][3]){
+          // we want to reset the completed states
+          tasks_vector[k][3] = 0;
+          }
+          else if(tasks_vector[k][1] !=tasks_vector[k][3]){
           // this is a misse
           std::cout<<i<<" task "<<tasks_vector[k][0]<<" misses \n";
 
+          }
         }
       }
     }
     // print_2d_vector(tasks_vector,n,m);
-
+    //  this sorts the task based on the dealine
+    // the task with the ealist deadline comes first 
+    sort(tasks_vector.begin(), tasks_vector.end(),sortcoledf);
     for(int j = 0; j<n;j++){
       //check if a task is completed
       if(tasks_vector[j][1] ==tasks_vector[j][3]){
@@ -75,13 +79,15 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
          
 
           // this is just normal operations which means we add a execute flag
-          std::cout<<i<<" task "<<tasks_vector[j][0]<< " executes \n";
+          std::cout<<i<<" task "<<tasks_vector[j][0]<< " executes its deadline is "<<tasks_vector[j][4]<<" \n";
           // incrament to the completeness variable
           tasks_vector[j][3] = tasks_vector[j][3] + 1;
           // check if it completes in that cycle
           if(tasks_vector[j][1] ==tasks_vector[j][3]){
 
             std::cout<<i<<" task "<<tasks_vector[j][0]<< " completes \n";
+            // when a task completes we change its dealine 
+            tasks_vector[j][4] = tasks_vector[j][4] + tasks_vector[j][2];
 
           }
           break;
@@ -95,8 +101,18 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
 
   }
 
-  std::cout<<"\nend of the rms \n";
+  std::cout<<"\nend of the edf \n";
 
 
 }
+
+// Driver function to sort the 2D vector 
+// on basis the dealine
+bool sortcoledf( const std::vector<int>& v1, const std::vector<int>& v2 ) { 
+    
+
+    int n = 4; // this is the thing we want to sort by 
+    return v1[n] < v2[n]; 
+
+} 
 

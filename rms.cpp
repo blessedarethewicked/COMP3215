@@ -6,7 +6,7 @@ This files includes function and class definitions
 
 
 void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
-  std::cout<<"starting edf \n";
+  std::cout<<"starting rms \n";
   // we get a vector made up of only the periods
   // first make a vector with just the periods
   std::vector<int> tasks_periods;
@@ -38,7 +38,7 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
       }
       // check if there is meant to be a dealine 
 
-      if(i%tasks_vector[k][2]){
+      if((i+1)%tasks_vector[k][2]){
         // we set the deadline variable to zero
          tasks_vector[k][4] = 0; 
 

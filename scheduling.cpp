@@ -18,7 +18,7 @@ This is the code that i have for the coursework
 #include "files.h"
 // write_to_file(file_name, output);(); //calls the edf fuction
 
-int n = 3; // this is the number of tasks this is the rows [x][.]
+int n; // this is the number of tasks this is the rows [x][.]
 int m = 5; // this is the number of parameters that we have at this point this is the colum [.][x] 
 
 std::vector<std::string> output; // this is where i save what i am going to write out into teh output file
@@ -38,9 +38,11 @@ int main() {
     std::string file_name;
     file_name = "testcase2";
 
-    test_priority_2d = file_to_vector(file_name,m);
-    // print_2d_vector(test_priority_2d,n,m);
+    test_priority_2d = file_to_vector(file_name,m,n);
+    print_2d_vector(test_priority_2d,n,m);
+    //  needs more testing 
     edf(test_priority_2d,n,m);
+    // rms(test_priority_2d,n,m);
 
 
     std::cout << "ending scheduling \n";

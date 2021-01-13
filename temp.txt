@@ -1,5 +1,4 @@
-starting scheduling
-starting edf
+starting rms
 20 is the lcm
 0 task 2 executes
 0 task 2 completes
@@ -33,5 +32,4 @@ starting edf
 18 no task
 19 no task
 
-end of the rms
-ending scheduling
+end of the rmss

@@ -38,13 +38,12 @@ void write_to_file(std::string fname,std::vector<std::string> output_vector){
 }
 
 // this function takes the task from the txt and makes then into the form of a vector
-std::vector<std::vector<int>> file_to_vector(std::string fname,int m){
+std::vector<std::vector<int>> file_to_vector(std::string fname,int m,int &n){
     // 
     std::ifstream myfile ("testcase2.txt");
     std::string line;
     int linetracker = 0;
     std::vector<std::vector<int>> test_priority_2d;
-    int n;
     if (myfile.is_open()){
         while (getline(myfile,line) ){
 
