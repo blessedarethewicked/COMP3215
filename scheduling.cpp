@@ -38,38 +38,10 @@ int main() {
     std::string file_name;
     file_name = "testcase2";
 
-    // test_priority_2d[0][0]= 1;
-    // test_priority_2d[0][1]= 2;
-    // test_priority_2d[0][2]= 10;
-    // test_priority_2d[1][0]= 2;
-    // test_priority_2d[1][1]= 1;
-    // test_priority_2d[1][2]= 4;
-    // test_priority_2d[2][0]= 3;
-    // test_priority_2d[2][1]= 2;
-    // test_priority_2d[2][2]= 5;
     test_priority_2d = file_to_vector(file_name,m);
     // print_2d_vector(test_priority_2d,n,m);
     edf(test_priority_2d,n,m);
 
-
-    //this is not importent rn
-    /*
-    std::string file_name; //declaration of the file name variable
-    file_name = "output.txt"; // we set the file name variable 
-
-    std::string line; //declaration of the file name variable
-    line = "this is my new file"; // we set the file name variable 
-
-    one = "line one";
-    two = "line two";
-    three = "line three";
-
-    output.push_back(one); // this adds an element to the end of the array
-    output.push_back(two);
-    output.push_back(three);
-
-    write_to_file(file_name, output); // call the write to file fuction
-    */
 
     std::cout << "ending scheduling \n";
     return 0;

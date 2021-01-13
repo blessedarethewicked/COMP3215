@@ -3,10 +3,9 @@ This files includes function and class definitions
 */
 // header has all the necessary declaration and the required files  
 #include "edf.h"
+#include "rms.h"
 
-
-
-void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
+void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
   std::cout<<"starting edf \n";
   // we get a vector made up of only the periods
   // first make a vector with just the periods
@@ -73,22 +72,21 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
       //if its not complete
       else{
         // check if its not the dealine
-         if(tasks_vector[j][4]!=1){
+         
 
-            // this is just normal operations which means we add a execute flag
-            std::cout<<i<<" task "<<tasks_vector[j][0]<< " executes \n";
-            // incrament to the completeness variable
-            tasks_vector[j][3] = tasks_vector[j][3] + 1;
-            // check if it completes in that cycle
-            if(tasks_vector[j][1] ==tasks_vector[j][3]){
+          // this is just normal operations which means we add a execute flag
+          std::cout<<i<<" task "<<tasks_vector[j][0]<< " executes \n";
+          // incrament to the completeness variable
+          tasks_vector[j][3] = tasks_vector[j][3] + 1;
+          // check if it completes in that cycle
+          if(tasks_vector[j][1] ==tasks_vector[j][3]){
 
-              std::cout<<i<<" task "<<tasks_vector[j][0]<< " completes \n";
+            std::cout<<i<<" task "<<tasks_vector[j][0]<< " completes \n";
 
-            }
-            break;
-            
-
-        }
+          }
+          break;
+          
+     
 
       }
 
@@ -99,82 +97,6 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
 
   std::cout<<"\nend of the rms \n";
 
-
-}
-
-void edf2(std::vector<int> task_periods,std::vector<int> task_priority) {
-  std::cout << "rms just got executed from other file! \n";
-
-    //step 1: find the lowest common denominator 
-    // lcm(test_periods);
-    auto lcm = std::accumulate(task_periods.begin(), task_periods.end(), 1, [](auto & a, auto & b) {return abs(a * b) / std::gcd(a, b);});
-    std::cout<<lcm; 
-    std::cout<<'\n'; 
-
-    //step 2: find the priority 
-    std::cout << "starting sorting stuff \n";
-    sort(task_priority.begin(), task_priority.end());
-    for (std::vector<int>::size_type i = 0; i != task_priority.size(); ++i){
-
-        std::cout << task_priority[i] << " ";   
-    }
-
-    std::cout << '\n';
-    // this depends on which has the smallest 
-}
-
-int lowest_common_multiple(std::vector<int> tasks_periods){
-
-
-  // // first make a vector with just the periods
-  // std::vector<int> tasks_periods;
-  // for(int i=0; i<n;i++){
-  //   // the periods ate in the [.][2] postions which is why we have a two 
-  //   tasks_periods.push_back(task_vec[i][2]);
-  // }
-
-  auto lcm = std::accumulate(tasks_periods.begin(), tasks_periods.end(), 1, [](auto & a, auto & b) {return abs(a * b) / std::gcd(a, b);});
-
-  return lcm;
-
-}
-
-// Driver function to sort the 2D vector 
-// on basis of a particular column 
-bool sortcol( const std::vector<int>& v1, const std::vector<int>& v2 ) { 
-    
-
-    int n = 2; // this is the thing we want to sort by 
-    return v1[n] < v2[n]; 
-
-} 
-
-void print_2d_vector(std::vector<std::vector<int>> task_vec,int n, int m){
-    std::cout << "\nprint 2_d vectors function called \n";
-
-    // this goes through all the elements in the vector and prints them
-
-    for(int i=0; i<n;i++){
-
-        for(int j=0; j<m;j++ ){
-            
-             std::cout << task_vec[i][j] << " ";
-            
-        }
-        std::cout<<"\n";
-    }
-
-
-}
-
-void print_1d_vector(std::vector<int> task_priority){
-    std::cout << "print vectors function called \n";
-
-    // this goes through all the elements in the vector and prints them
-    for (std::vector<int>::size_type i = 0; i != task_priority.size(); ++i){
-
-        std::cout << task_priority[i] << " ";   
-    }
 
 }
 
