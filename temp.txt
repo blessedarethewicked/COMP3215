@@ -1,0 +1,8 @@
+        if(tasks_vector[j][1]==tasks_vector[j][3]){
+
+        }else{
+          //check if its meant to be completes i.e we missed the deadline 
+          
+
+
+        }
