@@ -4,7 +4,6 @@ This files includes function and class definitions
 // header has all the necessary declaration and the required files  
 #include "files.h"
 
-
 // This function makes a vector of strings which represent the output and prints them all out to a output file. 
 void write_to_file(std::string fname,std::vector<std::string> output_vector){
 
@@ -35,5 +34,46 @@ void write_to_file(std::string fname,std::vector<std::string> output_vector){
     std::cout<< "Unable to open file";
 
     } 
+
+}
+
+// this function takes the task from the txt and makes then into the form of a vector
+std::vector<std::vector<int>> file_to_vector(std::string fname,int m){
+    // 
+    std::ifstream myfile ("testcase2.txt");
+    std::string line;
+    int linetracker = 0;
+    std::vector<std::vector<int>> test_priority_2d;
+    int n;
+    if (myfile.is_open()){
+        while (getline(myfile,line) ){
+
+            std::istringstream iss(line);
+            std::vector<std::string> results((std::istream_iterator<std::string>(iss)),std::istream_iterator<std::string>());
+            if(linetracker==0){
+                n = std::stoi(results[1]);
+               std::vector<std::vector<int>> temp( n , std::vector<int> (m, 0)); // test vector of perods 
+               test_priority_2d = temp;
+            }
+            else{
+                // first split the string into words 
+                
+
+                test_priority_2d[linetracker-1][0] = (int)results[0][4]-48; //we only need to look at the fifth character 
+                                                                          //because the longest testcase has 6 tasks
+                test_priority_2d[linetracker-1][1] = std::stoi(results[1]);
+                test_priority_2d[linetracker-1][2] = std::stoi(results[2]);
+
+            }
+        linetracker++;
+        }
+        myfile.close();
+        
+    }
+    else std::cout << "Unable to open file"; 
+    linetracker = 0;
+
+    return test_priority_2d;
+
 
 }

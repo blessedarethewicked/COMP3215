@@ -26,7 +26,10 @@ std::vector<std::vector<int>> test_priority_2d( n , std::vector<int> (m, 0)); //
 
 
 int main() {
+    std::string file_name;
+    file_name = "testcase2";
     std::cout << "starting vector test \n";
+    print_2d_vector(file_to_vector(file_name,m),n,m);
 
     std::cout << "ending vector test \n";
     return 0;

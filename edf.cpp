@@ -7,7 +7,7 @@ This files includes function and class definitions
 
 
 void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
-
+  std::cout<<"starting edf \n";
   // we get a vector made up of only the periods
   // first make a vector with just the periods
   std::vector<int> tasks_periods;
@@ -30,7 +30,7 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
 
   //  The actual algorithm 
   for(int i = 0; i<lcm;i++){
-    std::cout<<i<<" ";
+    // std::cout<<i<<"";
 
     //set the deadline flags to be on if a task deadline is meant to be on this tick
     for(int k = 0; k<n;k++){
@@ -52,19 +52,22 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
         }
         else if(tasks_vector[k][1] !=tasks_vector[k][3]){
           // this is a misse
-          std::cout<<"\ntask "<<tasks_vector[k][0]<<"misses \n";
+          std::cout<<i<<" task "<<tasks_vector[k][0]<<" misses \n";
 
         }
       }
     }
-    print_2d_vector(tasks_vector,n,m);
-    std::cout<<"\n";
+    // print_2d_vector(tasks_vector,n,m);
+
     for(int j = 0; j<n;j++){
       //check if a task is completed
       if(tasks_vector[j][1] ==tasks_vector[j][3]){
 
         //if its complete we move to the next task in the vector until one is not completes
         //go to the next tick
+        if(j==n-1){
+          std::cout<<i<<" no task\n";
+        }
         continue;      
       }
       //if its not complete
@@ -73,13 +76,13 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
          if(tasks_vector[j][4]!=1){
 
             // this is just normal operations which means we add a execute flag
-            std::cout<<"task "<<tasks_vector[j][0]<< " executes n \n";
+            std::cout<<i<<" task "<<tasks_vector[j][0]<< " executes \n";
             // incrament to the completeness variable
             tasks_vector[j][3] = tasks_vector[j][3] + 1;
             // check if it completes in that cycle
             if(tasks_vector[j][1] ==tasks_vector[j][3]){
 
-              std::cout<<"task "<<tasks_vector[j][0]<< " completes n \n";
+              std::cout<<i<<" task "<<tasks_vector[j][0]<< " completes \n";
 
             }
             break;

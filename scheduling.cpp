@@ -35,16 +35,20 @@ std::string three; //declaration of the file name variable
 int main() {
     std::cout << "starting scheduling \n";
 
-    test_priority_2d[0][0]= 1;
-    test_priority_2d[0][1]= 2;
-    test_priority_2d[0][2]= 10;
-    test_priority_2d[1][0]= 2;
-    test_priority_2d[1][1]= 1;
-    test_priority_2d[1][2]= 4;
-    test_priority_2d[2][0]= 3;
-    test_priority_2d[2][1]= 2;
-    test_priority_2d[2][2]= 5;
+    std::string file_name;
+    file_name = "testcase2";
 
+    // test_priority_2d[0][0]= 1;
+    // test_priority_2d[0][1]= 2;
+    // test_priority_2d[0][2]= 10;
+    // test_priority_2d[1][0]= 2;
+    // test_priority_2d[1][1]= 1;
+    // test_priority_2d[1][2]= 4;
+    // test_priority_2d[2][0]= 3;
+    // test_priority_2d[2][1]= 2;
+    // test_priority_2d[2][2]= 5;
+    test_priority_2d = file_to_vector(file_name,m);
+    // print_2d_vector(test_priority_2d,n,m);
     edf(test_priority_2d,n,m);
 
 
