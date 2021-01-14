@@ -37,7 +37,7 @@ void write_to_file(std::string fname,std::vector<std::string> output_vector){
 // this function takes the task from the txt and makes then into the form of a vector
 std::vector<std::vector<int>> file_to_vector(std::string fname,int m,int &n){
     // 
-    fname = fname + ".txt";
+    fname = fname + "/"+ fname+".txt";
     std::ifstream myfile (fname);
     std::string line;
     int linetracker = 0;

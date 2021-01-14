@@ -49,12 +49,12 @@ int main() {
 
     // schedule the edf
     output = edf(test_priority_2d,n,m);
-    output_name = file_name + "edf.txt";
+    output_name = file_name +"/"+file_name+ "edf.txt";
     write_to_file(output_name, output);
     
     // schedule the rms
     output = rms(test_priority_2d,n,m);
-    output_name = file_name + "rms.txt";
+    output_name = file_name +"/"+file_name+ "rms.txt";
     write_to_file(output_name, output);
 
     std::cout << "ending scheduling \n";
