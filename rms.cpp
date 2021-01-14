@@ -12,8 +12,9 @@ std::vector<std::string> rms(std::vector<std::vector<int>> tasks_vector,int n, i
   std::vector<std::string> output_vector;
   std::string output_string;
   int deadline_misses=0;
-   output_vector.push_back("------------------------");
 
+  output_string = std::to_string(n) + " is the number of task";
+  output_vector.push_back(output_string);
   // we get a vector made up of only the periods
   // first make a vector with just the periods
   std::vector<int> tasks_periods;
@@ -25,8 +26,11 @@ std::vector<std::string> rms(std::vector<std::vector<int>> tasks_vector,int n, i
   // STEP 1:find the lowest common denominator
   int lcm = lowest_common_multiple(tasks_periods); // this represents the whole timeline
 
-  std::cout<< lcm << " is the lcm \n";
+  std::cout<< lcm << " is the lowest common multiple \n";
+  output_string = std::to_string(lcm) + " is the lowest common multiple";
+  output_vector.push_back(output_string);
 
+  output_vector.push_back("------------------------");
   // STEP2: find the priority
   // the smaller the period the higher the priority 
   // we can just sort the task vector by the period and the smaller the index the higher the priority

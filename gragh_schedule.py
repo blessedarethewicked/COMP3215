@@ -17,9 +17,11 @@ np.random.seed(19680801)
 
 
 # create random data
-data1 = np.random.random([3, 50])
-# print(data1.shape)
-# print(data1)
+data1 = np.random.random([3, 40])
+data1 = data1*250
+print(type(data1))
+print(data1.shape)
+print(data1)
 
 
 
@@ -28,7 +30,7 @@ colors1 = ['C{}'.format(i) for i in range(3)]
 
 # set different line properties for each set of positions
 # note that some overlap
-lineoffsets1 = np.array([5, 10, 15]) # this changes the offsets of the line
+lineoffsets1 = np.array([ 0, 0, 0]) # this changes the offsets of the line
 linelengths1 = [3, 3, 3] #this changes the sizes of the lines
 
 # fig, axs = plt.subplots(2, 2) #this tells it to make four plots in a 2 by 2 grid
@@ -39,4 +41,4 @@ plt.eventplot(data1, colors=colors1, lineoffsets=lineoffsets1,
 
 
 plt.savefig('test.png')
-plt.show()
+# plt.show()
