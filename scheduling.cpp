@@ -36,14 +36,27 @@ int main() {
     std::cout << "starting scheduling \n";
 
     std::string file_name;
-    file_name = "testcase2";
+    std::string output_name;
+    file_name = "testcase1";
 
+    // get the name of the file
+    std::cout<<"What is the file name (defult is testcase1 ) \n";
+    std::cin>> file_name;
+    std::cout<<file_name<<"\n";
+
+    // reads in the vector from the file
     test_priority_2d = file_to_vector(file_name,m,n);
     print_2d_vector(test_priority_2d,n,m);
-    //  needs more testing 
-    edf(test_priority_2d,n,m);
-    // rms(test_priority_2d,n,m);
 
+    // schedule the edf
+    output = edf(test_priority_2d,n,m);
+    output_name = file_name + "edf.txt";
+    write_to_file(output_name, output);
+    
+    // schedule the rms
+    output = rms(test_priority_2d,n,m);
+    output_name = file_name + "rms.txt";
+    write_to_file(output_name, output);
 
     std::cout << "ending scheduling \n";
     return 0;

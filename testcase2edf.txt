@@ -1,0 +1,35 @@
+------------------------
+0 task 2 executes
+0 task 2 completes
+1 task 3 executes
+2 task 3 executes
+2 task 3 completes
+3 task 1 executes
+4 task 2 executes
+4 task 2 completes
+5 task 3 executes
+6 task 3 executes
+6 task 3 completes
+7 task 1 executes
+8 task 1 executes
+9 task 1 executes
+10 task 1 misses
+10 task 1 executes
+10 task 1 completes
+11 task 2 executes
+11 task 2 completes
+12 task 3 executes
+13 task 3 executes
+13 task 3 completes
+14 task 2 executes
+14 task 2 completes
+15 task 3 executes
+16 task 2 executes
+16 task 2 completes
+17 task 3 executes
+17 task 3 completes
+no task
+no task
+------------------------
+1 deadline misses in total 
+

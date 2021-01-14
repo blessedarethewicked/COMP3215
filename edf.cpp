@@ -5,11 +5,20 @@ This files includes function and class definitions
 #include "edf.h"
 #include "rms.h"
 
-void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
+std::vector<std::string> edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
   std::cout<<"starting edf \n";
+
+  // we need to set up the output vector which we are going to be writing to the output file
+  std::vector<std::string> output_vector;
+  std::string output_string;
+  int deadline_misses=0;
+   output_vector.push_back("------------------------");
   // we get a vector made up of only the periods
   // first make a vector with just the periods
   std::vector<int> tasks_periods;
+
+
+
   for(int i=0; i<n;i++){
     // the periods ate in the [.][2] postions which is why we have a two 
     tasks_periods.push_back(tasks_vector[i][2]);
@@ -42,6 +51,15 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
         if(i%tasks_vector[k][2]){
         // we set the deadline variable to zero
         // tasks_vector[k][4] = 0; 
+        // check if we are past the deadline and if so we missed
+        if(i>tasks_vector[k][4]){
+          std::cout<<i<<" task "<<tasks_vector[k][0]<<" misses \n";
+          deadline_misses++;
+          // write it to output vector
+          output_string = std::to_string(i) + " task " + std::to_string(tasks_vector[k][0]) + " misses";
+          output_vector.push_back(output_string);
+
+        }
 
         }
         else{
@@ -51,8 +69,14 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
           tasks_vector[k][3] = 0;
           }
           else if(tasks_vector[k][1] !=tasks_vector[k][3]){
-          // this is a misse
+          // this is a miss
+          //print it out to screen 
           std::cout<<i<<" task "<<tasks_vector[k][0]<<" misses \n";
+          deadline_misses++;
+          // write it to output vector
+          output_string = std::to_string(i) + " task " + std::to_string(tasks_vector[k][0]) + " misses";
+          output_vector.push_back(output_string);
+
 
           }
         }
@@ -70,6 +94,8 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
         //go to the next tick
         if(j==n-1){
           std::cout<<i<<" no task\n";
+          output_string =  "no task";
+          output_vector.push_back(output_string);
         }
         continue;      
       }
@@ -79,13 +105,17 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
          
 
           // this is just normal operations which means we add a execute flag
-          std::cout<<i<<" task "<<tasks_vector[j][0]<< " executes its deadline is "<<tasks_vector[j][4]<<" \n";
+          std::cout<<i<<" task "<<tasks_vector[j][0]<< " executes \n";
+          output_string = std::to_string(i) + " task " + std::to_string(tasks_vector[j][0]) + " executes";
+          output_vector.push_back(output_string);
           // incrament to the completeness variable
           tasks_vector[j][3] = tasks_vector[j][3] + 1;
           // check if it completes in that cycle
           if(tasks_vector[j][1] ==tasks_vector[j][3]){
 
             std::cout<<i<<" task "<<tasks_vector[j][0]<< " completes \n";
+            output_string = std::to_string(i) + " task " + std::to_string(tasks_vector[j][0]) + " completes";
+            output_vector.push_back(output_string);
             // when a task completes we change its dealine 
             tasks_vector[j][4] = tasks_vector[j][4] + tasks_vector[j][2];
 
@@ -100,8 +130,11 @@ void edf(std::vector<std::vector<int>> tasks_vector,int n, int m) {
 
 
   }
-
+  output_vector.push_back("------------------------");
+  output_string = std::to_string(deadline_misses) + " deadline misses in total \n";
+  output_vector.push_back(output_string);
   std::cout<<"\nend of the edf \n";
+  return output_vector;
 
 
 }

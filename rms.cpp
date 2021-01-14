@@ -5,8 +5,15 @@ This files includes function and class definitions
 #include "rms.h"
 
 
-void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
+std::vector<std::string> rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
   std::cout<<"starting rms \n";
+
+  // we need to set up the output vector which we are going to be writing to the output file
+  std::vector<std::string> output_vector;
+  std::string output_string;
+  int deadline_misses=0;
+   output_vector.push_back("------------------------");
+
   // we get a vector made up of only the periods
   // first make a vector with just the periods
   std::vector<int> tasks_periods;
@@ -39,8 +46,15 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
       // check if there is meant to be a dealine 
 
       if((i+1)%tasks_vector[k][2]){
-        // we set the deadline variable to zero
-         tasks_vector[k][4] = 0; 
+        //check if we missed a deadline
+        if( tasks_vector[k][4] == 1){
+           std::cout<<i<<" task "<<tasks_vector[k][0]<<" misses \n";
+          // write it to output vector
+          output_string = std::to_string(i) + " task " + std::to_string(tasks_vector[k][0]) + " misses";
+          output_vector.push_back(output_string);
+          deadline_misses++;
+
+        }
 
       }
       else{
@@ -52,7 +66,11 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
         else if(tasks_vector[k][1] !=tasks_vector[k][3]){
           // this is a misse
           std::cout<<i<<" task "<<tasks_vector[k][0]<<" misses \n";
-
+          tasks_vector[k][4]= 1;
+          // write it to output vector
+          output_string = std::to_string(i) + " task " + std::to_string(tasks_vector[k][0]) + " misses";
+          output_vector.push_back(output_string);
+          deadline_misses++;
         }
       }
     }
@@ -66,6 +84,8 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
         //go to the next tick
         if(j==n-1){
           std::cout<<i<<" no task\n";
+          output_string =  "no task";
+          output_vector.push_back(output_string);
         }
         continue;      
       }
@@ -76,12 +96,17 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
 
           // this is just normal operations which means we add a execute flag
           std::cout<<i<<" task "<<tasks_vector[j][0]<< " executes \n";
+          // write to output vector
+          output_string = std::to_string(i) + " task " + std::to_string(tasks_vector[j][0]) + " executes";
+          output_vector.push_back(output_string);
           // incrament to the completeness variable
           tasks_vector[j][3] = tasks_vector[j][3] + 1;
           // check if it completes in that cycle
           if(tasks_vector[j][1] ==tasks_vector[j][3]){
-
+            // write to output vector
             std::cout<<i<<" task "<<tasks_vector[j][0]<< " completes \n";
+            output_vector.push_back(output_string);
+            tasks_vector[j][4]= 0;
 
           }
           break;
@@ -95,7 +120,11 @@ void rms(std::vector<std::vector<int>> tasks_vector,int n, int m) {
 
   }
 
+  output_vector.push_back("------------------------");
   std::cout<<"\nend of the rms \n";
+  output_string = std::to_string(deadline_misses) + " deadline misses in total \n";
+  output_vector.push_back(output_string);
+  return output_vector;
 
 
 }

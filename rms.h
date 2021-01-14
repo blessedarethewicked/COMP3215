@@ -2,9 +2,10 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <string>
 
 // this fuction houses the rms algorithm 
-void rms(std::vector<std::vector<int>> tasks_vector,int n, int m);
+std::vector<std::string> rms(std::vector<std::vector<int>> tasks_vector,int n, int m);
 
 //this is not a used function. i only had it for testing purposes
 void rms2(std::vector<int> task_periods,std::vector<int> task_priority);
