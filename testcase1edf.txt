@@ -1,35 +1,51 @@
 ------------------------
-0 task 2 executes
-0 task 2 completes
-1 task 3 executes
-2 task 3 executes
-2 task 3 completes
-3 task 1 executes
+0 task 1 executes
+1 task 1 executes
+1 task 1 completes
+2 task 2 executes
+3 task 2 executes
 4 task 2 executes
-4 task 2 completes
-5 task 3 executes
-6 task 3 executes
-6 task 3 completes
+5 task 2 executes
+5 task 2 completes
+6 task 1 executes
 7 task 1 executes
-8 task 1 executes
-9 task 1 executes
-10 task 1 misses
-10 task 1 executes
-10 task 1 completes
+7 task 1 completes
+8 task 2 executes
+9 task 2 executes
+10 task 2 executes
 11 task 2 executes
 11 task 2 completes
-12 task 3 executes
-13 task 3 executes
-13 task 3 completes
+12 task 1 executes
+13 task 1 executes
+13 task 1 completes
 14 task 2 executes
-14 task 2 completes
-15 task 3 executes
-16 task 2 executes
-16 task 2 completes
-17 task 3 executes
-17 task 3 completes
-no task
+15 task 1 executes
+16 task 1 executes
+16 task 1 completes
+17 task 2 executes
+18 task 2 executes
+19 task 2 executes
+19 task 2 completes
+20 task 1 executes
+21 task 1 executes
+21 task 1 completes
+22 task 2 executes
+23 task 2 executes
+24 task 2 executes
+25 task 2 executes
+25 task 2 completes
+26 task 1 executes
+27 task 1 executes
+27 task 1 completes
+28 task 2 executes
+29 task 2 executes
+30 task 1 executes
+31 task 1 executes
+31 task 1 completes
+32 task 2 executes
+33 task 2 executes
+33 task 2 completes
 no task
 ------------------------
-1 deadline misses in total 
+0 deadline misses in total 
 

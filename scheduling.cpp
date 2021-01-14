@@ -43,7 +43,6 @@ int main() {
     std::cout<<"What is the file name (defult is testcase1 ) \n";
     std::cin>> file_name;
     std::cout<<file_name<<"\n";
-
     // reads in the vector from the file
     test_priority_2d = file_to_vector(file_name,m,n);
     print_2d_vector(test_priority_2d,n,m);
