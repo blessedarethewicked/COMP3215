@@ -28,8 +28,8 @@
 16 task 2 completes
 17 task 3 executes
 17 task 3 completes
-no task
-no task
+18 no task executing
+19 no task executing
 ------------------------
 1 deadline misses in total 
 

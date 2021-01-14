@@ -45,7 +45,7 @@
 32 task 2 executes
 33 task 2 executes
 33 task 2 completes
-no task
+34 no task executing
 ------------------------
 0 deadline misses in total 
 

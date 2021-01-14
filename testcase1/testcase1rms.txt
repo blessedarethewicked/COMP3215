@@ -12,12 +12,12 @@
 7 task 2 misses
 7 task 2 executes
 7 task 2 executes
-no task
+8 no task executing
 9 task 1 executes
 10 task 1 executes
 10 task 1 executes
-no task
-no task
+11 no task executing
+12 no task executing
 13 task 2 executes
 14 task 1 executes
 15 task 1 executes
@@ -45,7 +45,7 @@ no task
 31 task 2 executes
 32 task 2 executes
 32 task 2 executes
-no task
+33 no task executing
 34 task 1 executes
 ------------------------
 2 deadline misses in total 

@@ -1,0 +1,2 @@
+cls
+python read_from_files.py

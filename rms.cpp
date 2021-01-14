@@ -84,7 +84,7 @@ std::vector<std::string> rms(std::vector<std::vector<int>> tasks_vector,int n, i
         //go to the next tick
         if(j==n-1){
           std::cout<<i<<" no task\n";
-          output_string =  "no task";
+          output_string = std::to_string(i)  + " no task executing";
           output_vector.push_back(output_string);
         }
         continue;      
