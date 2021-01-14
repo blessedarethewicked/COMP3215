@@ -6,7 +6,12 @@ matplotlib.rcParams['font.size'] = 8.0
 
 
 f = open("testcase2/testcase2edf.txt", "r")
+time_line={'0':{'task1': 'executes'},
+}
+task = {}
+action = {}
 tick_counter = 0
+number_of_tasks = 0
 executes = []
 completes = []
 misses = []
@@ -15,6 +20,18 @@ executing = []
 print("test")
 end_of_file = '------------------------'
 for line in f:
+    try:
+        number_of_tasks,word_is,word_the,word_number,word_of,word_task =line.split()
+        if word_number=='number':
+            print(number_of_tasks)
+        if word_number=='lowest':
+            print(number_of_tasks)
+            for x in range(0,(number_of_tasks+1)):
+                task{number_of_tasks} = 
+
+    except:
+        pass        
+        
     task_action =''
     tick = ''
     try:
