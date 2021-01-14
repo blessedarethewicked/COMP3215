@@ -105,6 +105,7 @@ std::vector<std::string> rms(std::vector<std::vector<int>> tasks_vector,int n, i
           if(tasks_vector[j][1] ==tasks_vector[j][3]){
             // write to output vector
             std::cout<<i<<" task "<<tasks_vector[j][0]<< " completes \n";
+            output_string = std::to_string(i) + " task " + std::to_string(tasks_vector[j][0]) + " completes";
             output_vector.push_back(output_string);
             tasks_vector[j][4]= 0;
 
